@@ -6,17 +6,16 @@
 	
 	const messages = writable([]);
 
-	const user = {
-		name: 'Leaf',
-		image: 'https://cdn.discordapp.com/avatars/659488296820408355/df8fc8988aa62fd7c1ca1826c5efd92d.png',
-		color: '#4c2',
+	$: user = {
+		username: $messages[0]?.username || 'webhook',
+		avatar_url: $messages[0]?.avatar_url || 'https://cdn.discordapp.com/embed/avatars/1.png',
 	}
 </script>
 
 
 <main>
 	<Inputs {messages}/>
-	<Chat messages={$messages} user={user}/>
+	<Chat messages={$messages} {user}/>
 </main>
 
 

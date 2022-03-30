@@ -17,9 +17,9 @@
 
 <div class="message">
   <div class="contents">
-    <img src={user.image} alt={user.name} width="40px" height="40px">
+    <img src={user.avatar_url} alt={user.username} width="40px" height="40px">
     <h2 class="header">
-      <span class="name" style="color: {user.color}">{user.name}<span class="bot">BOT</span></span>
+      <span class="name">{user.username}<span class="bot">BOT</span></span>
       <span class="timestamp">{date.calendar(date)}</span>
     </h2>
     <div class="content">{@html content}</div>
@@ -58,6 +58,7 @@
 
   .name {
     padding-right: 4px;
+    color: var(--header-primary);
   }
 
   .bot {

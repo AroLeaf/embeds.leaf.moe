@@ -10,7 +10,11 @@
   let message = '';
   let error;
 
-  $: $messages = DME.render(md, { html: true }).messages();
+  $: (() => {
+    try {
+      $messages = DME.render(md, { html: true }).messages();
+    } catch (err) {}
+  })();
 
   async function submit() {
     const res = message

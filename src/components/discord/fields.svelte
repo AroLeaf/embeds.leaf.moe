@@ -16,7 +16,6 @@
         i--;
       }
     }
-    console.log(rows);
     return rows;
   }
 </script>
