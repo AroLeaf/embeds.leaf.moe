@@ -1,13 +1,13 @@
 <script>
   export let embed;
 
-  let text = embed.author.name || '';
+  $: text = embed.author.name || '';
 </script>
 
 
 <div class="author">
   {#if embed.author.icon_url}
-    <img src={embed.footer.icon_url} alt="">
+    <img src={embed.author.icon_url} alt="">
   {/if}
   {#if embed.author.url}
     <a href={embed.author.url}>{text}</a>

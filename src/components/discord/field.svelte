@@ -35,6 +35,7 @@
 
   :global(code) {
     background-color: var(--background-tertiary);
+    padding: 2.72px;
     font-size: 14px;
   }
 

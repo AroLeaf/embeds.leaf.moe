@@ -3,7 +3,6 @@
   import Message from './message.svelte';
 
   export let messages;
-  export let user;
 
   afterUpdate(() => {
 		setTimeout(() => {
@@ -15,7 +14,7 @@
 
 <div class="chat">
   {#each messages as message}
-    <Message message={message} user={user}/>
+    <Message {message}/>
   {/each}
 </div>
 
@@ -23,6 +22,7 @@
 <style>
   .chat {
     background-color: var(--background-primary);
+    max-width: 552px;
     padding: 8px 0px;
     border-radius: 8px;
   }

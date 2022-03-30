@@ -6,7 +6,7 @@
 
   export let embed;
 
-  let text = embed.footer?.text || '';
+  $: text = embed.footer?.text || '';
 </script>
 
 

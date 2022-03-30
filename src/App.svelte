@@ -5,17 +5,12 @@
 	import Inputs from './components/inputs.svelte';
 	
 	const messages = writable([]);
-
-	$: user = {
-		username: $messages[0]?.username || 'webhook',
-		avatar_url: $messages[0]?.avatar_url || 'https://cdn.discordapp.com/embed/avatars/1.png',
-	}
 </script>
 
 
 <main>
 	<Inputs {messages}/>
-	<Chat messages={$messages} {user}/>
+	<Chat messages={$messages}/>
 </main>
 
 
@@ -23,6 +18,7 @@
 	main {
 		display: grid;
 		grid-template-columns: 1fr auto;
+		grid-template-rows: minmax(512px, 1fr);
 		gap: 16px;
 		max-width: 1024px;
 		margin: 0px auto;

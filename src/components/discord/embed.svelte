@@ -11,7 +11,7 @@
 </script>
 
 
-<div class="embed" style={embed.color?`border-color:${embed.color}`:""}>
+<div class="embed" style={embed.color?`border-color:#${embed.color.toString(16)}`:""}>
   {#if embed.author}
     <Author {embed}/>
   {/if}

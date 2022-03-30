@@ -7,9 +7,8 @@
   dayjs.extend(calendar);
 
   export let message;
-  export let user;
 
-  let content = message.content || '';
+  $: content = message.content || '';
 
   const date = dayjs();
 </script>
@@ -17,9 +16,9 @@
 
 <div class="message">
   <div class="contents">
-    <img src={user.avatar_url} alt={user.username} width="40px" height="40px">
+    <img src={message.avatar_url||'https://cdn.discordapp.com/embed/avatars/0.png'} alt={message.username||'webhook'} width="40px" height="40px">
     <h2 class="header">
-      <span class="name">{user.username}<span class="bot">BOT</span></span>
+      <span class="name">{message.username||'webhook'}<span class="bot">BOT</span></span>
       <span class="timestamp">{date.calendar(date)}</span>
     </h2>
     <div class="content">{@html content}</div>
@@ -90,6 +89,7 @@
 
   :global(code) {
     background-color: var(--background-tertiary);
+    padding: 2.72px;
     font-size: 14px;
   }
 

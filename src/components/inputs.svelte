@@ -13,7 +13,9 @@
   $: (() => {
     try {
       $messages = DME.render(md, { html: true }).messages();
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   })();
 
   async function submit() {
