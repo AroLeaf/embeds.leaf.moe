@@ -24,6 +24,20 @@
       : await send(webhook, DME.render(md).messages()[0], /(\d+)\/?$/.exec(thread)?.[1]);
     if (res instanceof Error) error = res.message;
   }
+
+  function help() {
+    document.getElementById('help-modal').classList.add('open');
+  }
+
+  function tab(e) {
+    if (e.keyCode !== 9) return;
+    e.preventDefault();
+    const value = e.target.value;
+    const pos = { s: e.target.selectionStart, e: e.target.selectionEnd };
+    const add = /(?<![^\n])(..)*.$/.test(value.slice(0, pos.s)) ? ' ' : '  ';
+    e.target.value = value.slice(0, pos.s) + add + value.slice(pos.e)
+    e.target.selectionStart = e.target.selectionEnd = pos.s + (pos.s == pos.e ? 2 : add.length);
+  }
 </script>
 
 
@@ -50,8 +64,8 @@
 
 
   <label style="grid-column: 1 / 3;">
-    <h4>Markdown</h4>
-    <textarea bind:value={md}></textarea>
+    <h4>Markdown <span class="help" on:click={help}><svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208S370.7 464 256 464zM256 336c-18 0-32 14-32 32s13.1 32 32 32c17.1 0 32-14 32-32S273.1 336 256 336zM289.1 128h-51.1C199 128 168 159 168 198c0 13 11 24 24 24s24-11 24-24C216 186 225.1 176 237.1 176h51.1C301.1 176 312 186 312 198c0 8-4 14.1-11 18.1L244 251C236 256 232 264 232 272V288c0 13 11 24 24 24S280 301 280 288V286l45.1-28c21-13 34-36 34-60C360 159 329 128 289.1 128z"/></svg></span></h4>
+    <textarea bind:value={md} on:keydown={tab}></textarea>
   </label>
 </div>
 
@@ -79,6 +93,11 @@
 
   .error {
     color: tomato;
+  }
+
+  .help {
+    cursor: pointer;
+    vertical-align: -4px;
   }
 
   input, textarea {
@@ -128,6 +147,7 @@
 
   textarea {
 		resize: none;
-    height: calc(100% - 24px);
+    height: calc(100% - 28px);
+    margin: 0px;
 	}
 </style>

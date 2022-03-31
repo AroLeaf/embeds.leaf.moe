@@ -81,22 +81,23 @@
     white-space: pre-line;
   }
 
-  :global(pre) {
+  :global(.content pre) {
     white-space: pre-wrap;
     display: block;
     margin-top: 6px;
   }
 
-  :global(code) {
+  :global(.content code) {
     background-color: var(--background-tertiary);
     padding: 2.72px;
     font-size: 14px;
   }
 
-  :global(pre code) {
+  :global(.content pre code) {
     display: block;
     padding: 7px;
     border-radius: 4px;
+    border: 1px solid var(--background-tertiary);
   }
 
   .embeds {

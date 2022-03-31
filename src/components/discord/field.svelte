@@ -27,19 +27,21 @@
     min-width: 0;
   }
 
-  :global(pre) {
+  :global(.field pre) {
     white-space: pre-wrap;
     display: block;
     margin-top: 6px;
   }
 
-  :global(code) {
+  :global(.field code) {
     background-color: var(--background-tertiary);
     padding: 2.72px;
     font-size: 14px;
   }
 
-  :global(pre code) {
+  :global(.field pre code) {
+    background-color: var(--background-tertiary);
+    border: none;
     display: block;
     padding: 7px;
     border-radius: 4px;

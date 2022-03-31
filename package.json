@@ -20,6 +20,6 @@
   },
   "dependencies": {
     "dayjs": "^1.11.0",
-    "discord-markdown-embeds": "^2.0.1"
+    "discord-markdown-embeds": "^2.0.3"
   }
 }
