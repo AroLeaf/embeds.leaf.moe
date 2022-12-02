@@ -1,0 +1,35 @@
+{
+  "name": "embeds.leaf.moe",
+  "version": "2.0.0-dev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npx rollup -c",
+    "dev": "npx rollup -c -w",
+    "secret": "node -e 'import(`./backend/lib/jwt.js`).then(i => console.log(i.default.secret()))'"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.1.0",
+    "dayjs": "^1.11.6",
+    "discord-markdown-embeds": "^3.1.4",
+    "highlight.js": "^11.7.0",
+    "rollup": "^3.4.0",
+    "rollup-plugin-css-only": "^4.3.0",
+    "rollup-plugin-svelte": "^7.1.0",
+    "svelte": "^3.53.1"
+  },
+  "dependencies": {
+    "@aroleaf/svelte-textarea-autoresize": "^1.1.0",
+    "@fastify/cookie": "^8.3.0",
+    "@fastify/cors": "^8.2.0",
+    "@fastify/static": "^6.5.1",
+    "@fastify/view": "^7.3.0",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.10.2",
+    "mongoose": "^6.7.3",
+    "pug": "^3.0.2",
+    "stage0": "^0.0.25"
+  }
+}

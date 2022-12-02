@@ -1,0 +1,91 @@
+mixin modal
+  div.container&attributes(attributes)
+    div.modal
+      if block
+        block
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    
+    title Markdown Webhooks
+
+    link(rel='stylesheet' href='public/style.css')
+    link(rel='stylesheet' href='public/discord-hljs.css')
+    link(rel='stylesheet' href='public/build/bundle.css')
+
+    link(rel='icon' href='data:,')
+
+    script(defer src='public/build/bundle.js')
+  
+  body
+    header
+      .spacer
+      .profile
+        if user
+          .col
+            b.name= user.name
+            a#logout(href='/api/auth/logout') Log out
+          img.pfp(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${user.avatar[1] === '_' ? 'gif' : 'png'}`)
+        else
+          button.blue#login Log In
+
+    .modals
+      +modal#json
+        label
+          h4 JSON Data
+          textarea
+        p.error
+        .buttons
+          button.cancel Cancel
+          button.blue.submit Submit
+      
+      +modal#save
+        label
+          h4 Name
+          input.name
+        p.error
+        label
+          h4 Public
+          .checkbox  
+            input(type='checkbox', checked=document ? document.public : false).public
+            .background
+              .slider
+        .buttons
+          button.cancel Cancel
+          button.blue.save Save
+    
+    main
+      .inputs
+        .row
+          p.error
+        .row
+          label
+            h4 Webhook URL
+            input#webhook
+          button.blue#submit(disabled) Send
+        .row
+          label
+            h4 Forum Thread Name
+            input#threadname
+        .row
+          label
+            h4 Thread ID or URL
+            input#threadurl
+          label
+            h4 Message ID or URL
+            input#messageurl
+        .row
+          label 
+            h4 Markdown
+            textarea#markdown
+              if document
+                = document.markdown
+        .row
+          button#editjson Edit JSON
+          if user
+            button(class={ hidden: !document || document.author !== user.id })#saveasbutton Save as
+            button.blue#savebutton Save
+      #embeds
