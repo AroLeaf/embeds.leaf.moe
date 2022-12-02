@@ -98,6 +98,7 @@ header {
   margin: 16px auto;
   padding: 8px 16px;
   box-sizing: border-box;
+  align-items: center;
   border-radius: 8px;
   background-color: var(--background-primary);
 }
@@ -111,6 +112,13 @@ header .profile {
   gap: 8px;
   justify-self: end;
   text-align: end;
+}
+
+header .homelink {
+  color: var(--header-primary);
+}
+header .homelink:hover {
+  text-decoration: none;
 }
 
 header .col {
