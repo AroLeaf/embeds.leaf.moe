@@ -39,6 +39,13 @@
   :global(.mention:hover) {
     background-color: #5865f2;
   }
+
+  :global(.emoji) {
+    object-fit: contain;
+    width: 1.375em;
+    height: 1.375em;
+    vertical-align: bottom;
+  }
   
   :global(.description pre) {
     white-space: pre-wrap;
