@@ -40,6 +40,12 @@
     background-color: #5865f2;
   }
 
+  :global(:is(ul, ol)) {
+    margin: 0px;
+    padding: 0px;
+    list-style-position: inside;
+  }
+
   :global(.emoji) {
     object-fit: contain;
     width: 1.375em;
