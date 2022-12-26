@@ -1,5 +1,7 @@
+import * as schemas from '../schemas.js';
+
 export default function(fastify, _options, done) {
-  fastify.post('/', async (request, reply) => {
+  fastify.post('/', { schema: schemas.documents.post }, async (request, reply) => {
     const user = await request.auth();
     if (!user) return reply.error(401, 'You are not logged in');
     
@@ -55,7 +57,7 @@ export default function(fastify, _options, done) {
   });
 
 
-  fastify.patch('/:name', async (request, reply) => {
+  fastify.patch('/:name', { schema: schemas.documents.patch }, async (request, reply) => {
     const doc = await fastify.db.getDocument(request.params.name);
     if (!doc) return reply.error(404, 'Document not found');
 
@@ -73,7 +75,7 @@ export default function(fastify, _options, done) {
     });
   });
 
-  fastify.put('/:name/markdown.md', async (request, reply) => {
+  fastify.put('/:name/markdown.md', { schema: schemas.documents.put }, async (request, reply) => {
     const doc = await fastify.db.getDocument(request.params.name);
     const user = await request.auth();
     if (!user) return reply.error(401, 'You are not logged in');
