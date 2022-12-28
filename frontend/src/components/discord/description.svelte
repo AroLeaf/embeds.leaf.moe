@@ -43,7 +43,7 @@
   :global(:is(ul, ol)) {
     margin: 0px;
     padding: 0px;
-    list-style-position: inside;
+    list-style-type: none;
   }
 
   :global(.emoji) {
