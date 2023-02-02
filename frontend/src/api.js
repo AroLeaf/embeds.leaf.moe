@@ -5,6 +5,7 @@ async function getAvailable(name) {
 async function save(name, markdown) {
   return fetch(`/api/docs/${encodeURIComponent(name)}/markdown.md`, {
     method: 'PUT',
+    headers: { 'Content-Type': 'text/plain' },
     body: markdown,
   });
 }
