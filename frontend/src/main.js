@@ -88,8 +88,8 @@ saveButton?.addEventListener('click', async () => {
   saveButton.classList.remove('green');
   saveButton.classList.remove('error');
   
-  await api.save(name, markdownArea.value).then(() => {
-    saveButton.classList.add('green');
+  await api.save(name, markdownArea.value).then(res => {
+    saveButton.classList.add(res.ok ? 'green' : 'error');
   }).catch(() => {
     saveButton.classList.add('error');
   });
@@ -105,7 +105,10 @@ submitButton.addEventListener('click', async () => {
   const res = messageUrlInput.value
     ? await webhooks.edit(webhookInput.value, DME.render(markdownArea.value).messages()[0], /(\d+)\/?$/.exec(messageUrlInput.value)?.[1], /(\d+)\/?$/.exec(threadUrlInput.value)?.[1])
     : await webhooks.send(webhookInput.value, Object.assign(DME.render(markdownArea.value).messages()[0], { thread_name: threadNameInput.value }), /(\d+)\/?$/.exec(threadUrlInput.value)?.[1]);
-  if (res instanceof Error) return inputsError.innerText = res.message;
+  if (res instanceof Error) {
+    submitButton.classList.add('error');
+    return inputsError.innerText = res.message;
+  }
   submitButton.classList.add('green');
 });
 
