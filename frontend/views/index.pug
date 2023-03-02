@@ -22,16 +22,17 @@ html(lang='en')
   
   body
     header
-      a.homelink(href='/'): h2 embeds.leaf.moe
-      .spacer
-      .profile
-        if user
-          .col
-            b.name= user.name
-            a#logout(href='/api/auth/logout') Log out
-          img.pfp(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${user.avatar[1] === '_' ? 'gif' : 'png'}`)
-        else
-          button.blue#login Log In
+      .content
+        a.homelink(href='/'): h2 embeds.leaf.moe
+        .spacer
+        .profile
+          if user
+            .col
+              b.name= user.name
+              a#logout(href='/api/auth/logout') Log out
+            img.pfp(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${user.avatar[1] === '_' ? 'gif' : 'png'}`)
+          else
+            button.blue#login Log In
 
     .modals
       +modal#json

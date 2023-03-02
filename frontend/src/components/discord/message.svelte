@@ -34,6 +34,7 @@
 <style>
   .message {
     min-height: 48px;
+    width: fit-content;
     position: relative;
     margin-top: 17px;
     padding: 2px 48px 2px 72px;
@@ -102,7 +103,7 @@
 
   .embeds {
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-columns: 1fr;
     row-gap: 4px;
     padding: 2px 0px; 
   }

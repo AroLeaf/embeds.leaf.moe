@@ -2,6 +2,7 @@
   "name": "embeds.leaf.moe",
   "version": "2.0.0-dev",
   "private": true,
+  "main": "backend/index.js",
   "type": "module",
   "scripts": {
     "build": "npx rollup -c",

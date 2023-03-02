@@ -12,23 +12,27 @@
 
 
 <div class="embed" style={embed.color?`border-color:#${embed.color.toString(16)}`:""}>
-  {#if embed.author}
-    <Author {embed}/>
-  {/if}
-  {#if embed.title}
-    <Title {embed}/>
-  {/if}
-  {#if embed.description}
-    <Description {embed}/>
-  {/if}
-  {#if embed.fields?.length}
-    <Fields {embed}/>
-  {/if}
+  <div class="grid">
+    <div class="content">
+      {#if embed.author}
+        <Author {embed}/>
+      {/if}
+      {#if embed.title}
+        <Title {embed}/>
+      {/if}
+      {#if embed.description}
+        <Description {embed}/>
+      {/if}
+      {#if embed.fields?.length}
+        <Fields {embed}/>
+      {/if}
+    </div>
+    {#if embed.thumbnail}
+      <Thumbnail {embed}/>
+    {/if}
+  </div>
   {#if embed.image}
     <Image {embed}/>
-  {/if}
-  {#if embed.thumbnail}
-    <Thumbnail {embed}/>
   {/if}
   {#if embed.footer || embed.timestamp}
     <Footer {embed}/>
@@ -40,11 +44,14 @@
   .embed {
     width: fit-content;
     max-width: 432px;
-    display: grid;
-    grid-template-columns: minmax(1fr, 400px) auto;
     border-radius: 4px;
     border-left: 4px solid var(--background-tertiary);
     background: var(--background-secondary);
     padding: 8px 16px 16px 12px;
+  }
+
+  .grid {
+    display: grid;
+    /* grid-template-columns: minmax(400px, 1fr) auto; */
   }
 </style>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url("gg-sans/stylesheet.css");
 
 h1,h2,h3,h4,h5,h6,p,body,html {
   margin: 0px;
@@ -68,7 +68,7 @@ body {
   background-color: var(--background-tertiary);
   color: var(--text-normal);
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'gg sans', sans-serif;
 }
 
 a {
@@ -93,13 +93,16 @@ button.error {
 
 
 header {
-  display: flex;
   max-width: 1280px;
-  margin: 16px auto;
-  padding: 8px 16px;
-  box-sizing: border-box;
+  margin: 0px auto;
+  padding: 16px 64px;
+}
+
+header .content {
+  display: flex;
   align-items: center;
   border-radius: 8px;
+  padding: 8px 16px;
   background-color: var(--background-primary);
 }
 
@@ -270,8 +273,9 @@ button.green {
 
 #embeds {
   height: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
 }
-
 
 .container {
   visibility: visible;
@@ -358,4 +362,20 @@ button.green {
 
 #save input {
   background-color: var(--background-tertiary);
+}
+
+
+@media (max-width: 768px) {
+  header {
+    padding: 16px;
+  }
+
+  header h2 {
+    font-size: 20px;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
 }
