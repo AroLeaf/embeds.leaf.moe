@@ -8,8 +8,8 @@ import path from 'path';
 import 'dotenv/config.js';
 
 import Database from './db/index.js';
-import api from './routes/api.js';
 import JWT from './lib/jwt.js';
+import api from './routes/api.js';
 import views from './routes/views.js';
 
 

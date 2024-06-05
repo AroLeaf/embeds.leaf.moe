@@ -16,6 +16,20 @@ export default function(fastify, _options, done) {
   });
 
 
+  fastify.get('/list', async (request, reply) => {
+    console.log('test');
+    const user = await request.auth();
+    if (!user) return reply.error(401, 'You are not logged in');
+    const docs = await fastify.db.documents.find({ author: user.id });
+    return docs.map(doc => ({
+      name: doc.name,
+      author: doc.author,
+      public: doc.public,
+      markdown: doc.markdown,
+    }));
+  });
+
+
   fastify.get('/:name', async (request, reply) => {
     const doc = await fastify.db.getDocument(request.params.name);
     if (!doc) return reply.error(404, 'Document not found');
